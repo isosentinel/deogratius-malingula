@@ -246,3 +246,11 @@ footer{
   .hero h1{font-size:2.6rem;}
   header{padding:15px 20px;}
 }
+
+@media (max-width:768px){
+  body{
+    background-attachment:scroll;
+    background-size:cover;
+  }
+}
+
