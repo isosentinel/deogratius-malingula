@@ -121,7 +121,126 @@ const contentDB={
   "Encryption":[
     {type:"pdf",title:"Encryption Guide",src:"docs/encryption.pdf"},
     {type:"video",title:"Encryption Explained",src:"https://www.youtube.com/embed/jhXCTbFnK8o"}
-  ]
+  ],
+  "Discrete Mathematics":[
+    {type:"video", title:"Boolean Algebra Intro 1", src:"https://www.youtube.com/embed/WW-NPtIzHwk?si=S6Et5sQ3A-AxTot-"},
+    {type:"video", title:"Boolean Algebra Intro 2", src:"https://www.youtube.com/embed/OjWmVCG8PLA?si=DR1Ad8Ajome8e5dX"},
+    {type:"video", title:"Boolean Algebra Examples 1", src:"https://www.youtube.com/embed/k04ksfLBuak?si=B11VKH4f5NhoV-ua"},
+    {type:"video", title:"Boolean Algebra Examples 2", src:"https://www.youtube.com/embed/uPBYaCarXDM?si=unuS9kYIS0FsCSXj"},
+    {type:"video", title:"Redundancy Theorem", src:"https://www.youtube.com/embed/3pbH9IhxwOg?si=4i1VSpMq9pVyJdo5"},
+    {type:"video", title:"Sum of Products SOP 1", src:"https://www.youtube.com/embed/xnLBbOYYnHM?si=qY22czHyE62USTbq"},
+    {type:"video", title:"Sum of Products SOP 2", src:"https://www.youtube.com/embed/NGgNoa0_zns?si=O1VOzVXhgPLc-VhI"},
+    {type:"video", title:"Product of Sums POS 1", src:"https://www.youtube.com/embed/nXsiLPJfDZ4?si=ZLOfD3b9sPfISH6R"},
+    {type:"video", title:"Product of Sums POS 2", src:"https://www.youtube.com/embed/ihTH1C6qCYI?si=KnGuXgunjKqH1-o9"},
+    {type:"video", title:"SOP & POS Examples", src:"https://www.youtube.com/embed/K2cpJex0o_A?si=rJ0XZjTHR_3iiFPn"},
+    {type:"video", title:"Canonical Conv 1", src:"https://www.youtube.com/embed/Km5pTz67uGc?si=UYpgJYboTvZep6LF"},
+    {type:"video", title:"Canonical Conv 2", src:"https://www.youtube.com/embed/f0trF1LtYZ4?si=tbdeyvhmUHHp2ybX"},
+    {type:"video", title:"Karnaugh Map Part 1", src:"https://www.youtube.com/embed/FPrcIhqNPVo?si=htI09DV2h38I4jxQ"},
+    {type:"video", title:"Karnaugh Map Part 2", src:"https://www.youtube.com/embed/uWjKzsWXAF4?si=2OfzWi1xJtZ6U8cp"},
+    {type:"video", title:"Karnaugh Map Part 3", src:"https://www.youtube.com/embed/p7ittaZrZ1g?si=rReZf3Y1YMwV41NO"},
+    {type:"video", title:"K'Map and Implicants", src:"https://www.youtube.com/embed/J_t_7npo0CE?si=Gkh2Y8jvaUpPPZWd"},
+    {type:"video", title:"Introduction to Graph theory", src:"https://www.youtube.com/embed/HkNdNpKUByM?si=qCrU23iwz0j_Ohuv"},
+     {type:"video", title:"Subgraphs, complements and complete graph", src:"https://www.youtube.com/embed/GHOHV6gTOd4?si=UIakIC7UYIDFh_mF"},
+    {type:"video", title:"Isomorphisms and Bipartite graphs", src:"https://www.youtube.com/embed/W9nJRN3ajuk?si=xAYeM6SMMhUB4ZsW"},
+    {type:"video", title:"Vertex Degree And Regular Graphs", src:"https://www.youtube.com/embed/k7ThfZIT_ac?si=vUtouggDMZTOt2gA"},
+    ],
+"Computer System Architecture":[
+  {
+    type:"video",
+    title:"CPU Architecture",
+    src:"https://www.youtube.com/embed/GtVDTp826DE"
+  },
+  {
+    type:"video",
+    title:"Introduction to Computer system Architecture",
+    src:"https://www.youtube.com/embed/GRInNLx3Tug"
+  },
+  {
+    type:"video",
+    title:"Instruction Cycle & Processing",
+    src:"https://www.youtube.com/embed/cO-H3tDqvXM"
+  },
+  {
+    type:"video",
+    title:"How do CPU work",
+    src:"https://www.youtube.com/embed/16zrEPOsIcI"
+  },
+  {
+    type:"video",
+    title:"Computer memory architecture",
+    src:"https://www.youtube.com/embed/ssfNW5oZ1Mw"
+  }
+],
+
+"Foundations of Intelligence":[
+  {
+    type:"video",
+    title:"Cyber intelligence threat 1",
+    src:"https://www.youtube.com/embed/75GCYd5pHjg?si=VuHAd2MOi4ty8Sf8"
+  },
+  {
+    type:"video",
+    title:"Cyber intelligence threat 2",
+    src:"https://www.youtube.com/embed/V7hcnIQwdiE?si=qNRQSXb-g4zniXYQ"
+  },
+  {
+    type:"video",
+    title:"Cyber threat intelligence 3",
+    src:"https://www.youtube.com/embed/V-ByZhGV3es?si=tJjVz86ZTpqnVpmew"
+  }
+],
+
+"Database Systems":[
+  {
+    type:"video",
+    title:"Introduction to database management system (DBMS)",
+    src:"https://www.youtube.com/embed/6Iu45VZGQDk?si=8PQEm-YtficZ1Mo5"
+  },
+  {
+    type:"video",
+    title:"DBMS Characteristics",
+    src:"https://www.youtube.com/embed/wClEbCyWryI?si=A1vBfvyxdngXdukk"
+  },
+  {
+    type:"video",
+    title:"SQL course part 1",
+    src:"https://www.youtube.com/embed/7S_tz1z_5bA"
+  },
+   {
+    type:"video",
+    title:"Database users",
+    src:"https://www.youtube.com/embed/qoAL4MA3P08?si=YIBOyQrxT9Wkhasx"
+  },
+  {
+    type:"video",
+    title:"Advantages and disadvantages of DBMS",
+    src:"https://www.youtube.com/embed/YcYF-kxE0Sw?si=9J9rTA13BpdGwQor"
+  },
+  {
+    type:"video",
+    title:"History of database application",
+    src:"https://www.youtube.com/embed/-bMiKvZRzwk?si=bKoRaIkiHFEhyCD_"
+  }
+],
+
+"Communication & Technical Writing":[
+  {
+    type:"video",
+    title:"Effective Communication Skills",
+    src:"https://www.youtube.com/embed/f2kyU2A5kyg"
+  },
+  {
+    type:"video",
+    title:"Technical Writing Fundamentals",
+    src:"https://www.youtube.com/embed/xu14W5mZwk4"
+  },
+  {
+    type:"video",
+    title:"Professional Technical Documentation",
+    src:"https://www.youtube.com/embed/so9jX3hf9dQ"
+  }
+]
+
 };
 
 /* =========================
@@ -157,12 +276,12 @@ function renderItems(items){
 
     if(item.type==="video"){
       div.innerHTML=`<h4>${item.title}</h4>
-      <iframe src="${item.src}" allowfullscreen></iframe>`;
+      <iframe src="${item.src}" allowfullscreen loading="lazy"></iframe>`;
     }
 
     if(item.type==="image"){
       div.innerHTML=`<h4>${item.title}</h4>
-      <img src="${item.src}">`;
+      <img src="${item.src}" alt="${item.title}">`;
     }
 
     body.appendChild(div);
