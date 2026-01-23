@@ -6,56 +6,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <header>
-  <h2>ISO Sentinel</h2>
+  <div class="logo-box">
+    <img src="logo.png" alt="ISO Sentinel Logo">
+    <h2>ISO Sentinel</h2>
+  </div>
   <nav>
-    <a href="#about">About</a>
-    <a href="#profile">Profile</a>
-    <a href="#modules">Modules</a>
-    <a href="#platforms">Platforms</a>
-    <a href="#videos">Videos</a>
-    <a href="#contact">Contact</a>
+    <a data-section="home">Home</a>
+    <a data-section="about">About</a>
+    <a data-section="profile">Profile</a>
+    <a data-section="modules">Modules</a>
+    <a data-section="platforms">Platforms</a>
+    <a data-section="videos">Videos</a>
+    <a data-section="contact">Contact</a>
   </nav>
 </header>
 
 <div class="marquee">
   <marquee>
-    Karibu ISO Sentinel,Tovuti maalumu kwa wanafunzi wa cyber security. Karibu tujifunze ulinzi na usalama wa taarifa kwa maslahi mapana ya taifa.
+    Karibu ISO Sentinel, Tovuti maalumu kwa wanafunzi wa cyber security. Karibu tujifunze ulinzi na usalama wa taarifa kwa maslahi mapana ya taifa.
   </marquee>
 </div>
 
-<section class="hero">
-
-  <!-- BACKGROUND MUSIC (SMALL & CLOSE) -->
-  <div class="hero-music">
-    <audio controls preload="none">
-      <source src="backmusic.mp3" type="audio/mpeg">
-    </audio>
+<!-- HOME PAGE -->
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-music">
+      <audio id="bgMusic" controls preload="none">
+        <source src="backmusic.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <h1>ISO Sentinel</h1>
+    <p>
+      Cybersecurity and Information Security Learning Platform focused on
+      protecting data and information.
+    </p>
   </div>
-
-  <h1>ISO Sentinel</h1>
-  <p>
-    Cybersecurity and Information Security Learning Platform focused on
-    protecting data and information.
-  </p>
 </section>
 
-<section id="about">
+<section id="about" class="page">
   <h2>About Website</h2>
   <p>
     ISO Sentinel is a special platform for cyber security students to learn and explore various knowledge about cyber security as well as information security in a wide sense.
   </p>
 </section>
 
-<section id="profile" class="profile">
+<section id="profile" class="profile page">
   <h2>My Profile</h2>
   <img src="profile.jpg" alt="Profile Image">
-
   <p><strong>Name:</strong> Deogratius John Malingula</p>
   <p><strong>Home Council:</strong> Sumbawanga, Rukwa, Tanzania.</p>
 
@@ -64,7 +67,7 @@
     <li>Primary School: Namanyere primary school</li>
     <li>O-Level: Wenda Secondary School</li>
     <li>A-Level: Ilboru High School</li>
-    <li>University: Institute of Accountancy Arusha (IAA,main campus)</li>
+    <li>University: Institute of Accountancy Arusha (IAA, main campus)</li>
   </ul>
 
   <p class="italic">
@@ -72,50 +75,45 @@
   </p>
 </section>
 
-<section id="modules">
+<section id="modules" class="page">
   <h2>Learning Modules</h2>
   <div class="grid">
-    <div class="card">Introduction to Cyber Security <button>Explore</button></div>
-    <div class="card">Computer System Architecture <button>Explore</button></div>
-    <div class="card">Discrete Mathematics <button>Explore</button></div>
-    <div class="card">Foundations of Intelligence <button>Explore</button></div>
-    <div class="card">Database Systems <button>Explore</button></div>
-    <div class="card">Communication & Technical Writing <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Introduction to Cyber Security">Introduction to Cyber Security <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Computer System Architecture">Computer System Architecture <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Discrete Mathematics">Discrete Mathematics <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Foundations of Intelligence">Foundations of Intelligence <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Database Systems">Database Systems <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Communication & Technical Writing">Communication & Technical Writing <button>Explore</button></div>
   </div>
 </section>
 
-<section id="platforms">
+<section id="platforms" class="page">
   <h2>Information Security Platforms</h2>
   <div class="grid">
-    <div class="card">Encryption <button>Explore</button></div>
-    <div class="card">Access Control <button>Explore</button></div>
-    <div class="card">Cryptography <button>Explore</button></div>
-    <div class="card">Network Security <button>Explore</button></div>
-    <div class="card">Endpoint Security <button>Explore</button></div>
-    <div class="card">Backup & Recovery <button>Explore</button></div>
-    <div class="card">Incident Response <button>Explore</button></div>
-    <div class="card">Risk Management <button>Explore</button></div>
-    <div class="card">Compliance <button>Explore</button></div>
-    <div class="card">Security Awareness <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Encryption">Encryption <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Access Control">Access Control <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Cryptography">Cryptography <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Network Security">Network Security <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Endpoint Security">Endpoint Security <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Backup & Recovery">Backup & Recovery <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Incident Response">Incident Response <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Risk Management">Risk Management <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Compliance">Compliance <button>Explore</button></div>
+    <div class="card explore-btn" data-title="Security Awareness">Security Awareness <button>Explore</button></div>
   </div>
 </section>
 
-<section id="videos">
+<section id="videos" class="page">
   <h2>Security Tutorial Videos</h2>
-  <div class="grid">
-    <div class="card video-box"><iframe loading="lazy" src="https://www.youtube.com/embed/1D6xTfud7T4" allowfullscreen></iframe></div>
-    <div class="card video-box"><iframe loading="lazy" src="https://www.youtube.com/embed/2LaAJq1lB1Q" allowfullscreen></iframe></div>
-    <div class="card video-box"><iframe loading="lazy" src="https://www.youtube.com/embed/inWWhr5tnEA" allowfullscreen></iframe></div>
-    <div class="card video-box"><iframe loading="lazy" src="https://www.youtube.com/embed/9rV4vHcFJGA" allowfullscreen></iframe></div>
-    <div class="card video-box"><iframe loading="lazy" src="https://www.youtube.com/embed/lJX2Zz7qJjU" allowfullscreen></iframe></div>
+  <div class="grid" id="video-grid">
+    <!-- Videos can be populated dynamically if needed -->
   </div>
 </section>
 
-<section id="contact" class="contact">
+<section id="contact" class="contact page">
   <h2>Contact & Feedback</h2>
   <p>Email: isosentinel@gmail.com</p>
   <p>Phone: +255 626 425 950</p>
-
   <form>
     <input type="text" placeholder="Your Name">
     <input type="email" placeholder="Your Email">
@@ -129,6 +127,22 @@
   <p>Designed by Deogratius John Malingula</p>
   <p class="italic">“Ninaamini Katika Zama Mpya za Maendeleo Jumuishi”</p>
 </footer>
+
+<!-- POPUP EXPLORER -->
+<div id="explorer">
+  <div class="explorer-box">
+    <span class="close">✖</span>
+    <h2 id="exp-title"></h2>
+    <input type="text" id="search" placeholder="Search content...">
+    <div class="filters">
+      <button data-filter="all">All</button>
+      <button data-filter="pdf">PDF</button>
+      <button data-filter="video">Video</button>
+      <button data-filter="image">Image</button>
+    </div>
+    <div id="exp-body"></div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
