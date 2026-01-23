@@ -1,41 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================
-     PAGE TRANSITION
-  ========================= */
-  const transition = document.createElement("div");
-  transition.id = "page-transition";
-  transition.innerHTML = "LOADING...";
-  document.body.appendChild(transition);
+  // =========================
+  // REGISTER SERVICE WORKER
+  // =========================
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => console.log('Service Worker Registered', reg))
+        .catch(err => console.log('Service Worker Failed', err));
+    });
+  }
 
-  window.addEventListener("load", () => {
-    transition.classList.add("hide");
+  // =========================
+  // INSTALL BANNER FOR PWA
+  // =========================
+  let deferredPrompt;
+  const installBanner = document.getElementById('installBanner');
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBanner.style.display = 'block';
   });
 
-  /* =========================
-     SINGLE PAGE NAVIGATION
-  ========================= */
+  installBtn.addEventListener('click', async () => {
+    installBanner.style.display = 'none';
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choiceResult = await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      console.log(choiceResult.outcome);
+    }
+  });
+
+  // =========================
+  // PAGE TRANSITION
+  // =========================
+  const transition = document.getElementById("page-transition");
+  window.addEventListener("load", () => transition.classList.add("hide"));
+
+  // =========================
+  // SINGLE PAGE NAVIGATION
+  // =========================
   const pages = document.querySelectorAll(".page");
   const navLinks = document.querySelectorAll("header nav a");
-
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
       const target = link.dataset.section;
-      pages.forEach(page => {
-        page.classList.toggle("active", page.id === target);
-      });
+      pages.forEach(page => page.classList.toggle("active", page.id === target));
       window.scrollTo({top: 0, behavior: "smooth"});
     });
   });
 
-  /* =========================
-     EXPLORER OVERLAY
-  ========================= */
+  // =========================
+  // EXPLORER POPUP
+  // =========================
+  const explorer = document.getElementById("explorer");
   const expTitle = document.getElementById("exp-title");
   const expBody = document.getElementById("exp-body");
   const searchInput = document.getElementById("search");
 
-  // Open explorer when "Explore" buttons clicked
   document.querySelectorAll(".explore-btn button").forEach(btn => {
     btn.addEventListener("click", () => {
       const title = btn.parentElement.dataset.title;
@@ -46,21 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Close explorer
-  document.querySelector(".close").addEventListener("click", () => {
-    explorer.style.display = "none";
-  });
+  document.querySelector(".close").addEventListener("click", () => explorer.style.display = "none");
 
-  /* =========================
-     CONTENT DATABASE
-  ========================= */
+  // =========================
+  // CONTENT DATABASE
+  // =========================
   const contentDB = {
-    "Introduction to Cyber Security": [
+    "Introduction to Cyber Security":[
       {type:"pdf",title:"Cyber Notes",src:"docs/cyber.pdf"},
       {type:"video",title:"Intro Video",src:"https://www.youtube.com/embed/1D6xTfud7T4"},
       {type:"image",title:"Cyber Diagram",src:"images/cyber.png"}
     ],
-    "Encryption": [
+    "Encryption":[
       {type:"pdf",title:"Encryption Guide",src:"docs/encryption.pdf"},
       {type:"video",title:"Encryption Explained",src:"https://www.youtube.com/embed/jhXCTbFnK8o"}
     ],
@@ -113,39 +135,26 @@ document.addEventListener("DOMContentLoaded", () => {
     ]
   };
 
-  /* =========================
-     RENDER FUNCTION
-  ========================= */
+  // =========================
+  // RENDER EXPLORER ITEMS
+  // =========================
   function renderItems(items){
     expBody.innerHTML = "";
     items.forEach(item => {
       const div = document.createElement("div");
       div.className = "exp-item";
-
-      if(item.type==="pdf"){
-        div.innerHTML = `<h4>${item.title}</h4>
-        <a href="${item.src}" target="_blank">View PDF</a>`;
-      }
-
-      if(item.type==="video"){
-        div.innerHTML = `<h4>${item.title}</h4>
-        <iframe src="${item.src}" allowfullscreen loading="lazy"></iframe>`;
-      }
-
-      if(item.type==="image"){
-        div.innerHTML = `<h4>${item.title}</h4>
-        <img src="${item.src}" alt="${item.title}">`;
-      }
-
+      div.dataset.type = item.type;
+      if(item.type==="pdf") div.innerHTML = `<h4>${item.title}</h4><a href="${item.src}" target="_blank">View PDF</a>`;
+      if(item.type==="video") div.innerHTML = `<h4>${item.title}</h4><iframe src="${item.src}" allowfullscreen loading="lazy"></iframe>`;
+      if(item.type==="image") div.innerHTML = `<h4>${item.title}</h4><img src="${item.src}" alt="${item.title}">`;
       expBody.appendChild(div);
     });
-
     setupVideoPause();
   }
 
-  /* =========================
-     SEARCH ENGINE
-  ========================= */
+  // =========================
+  // SEARCH FUNCTION
+  // =========================
   searchInput.addEventListener("input", e => {
     const q = e.target.value.toLowerCase();
     document.querySelectorAll(".exp-item").forEach(item => {
@@ -153,21 +162,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* =========================
-     FILTER BUTTONS
-  ========================= */
+  // =========================
+  // FILTER BUTTONS
+  // =========================
   document.querySelectorAll(".filters button").forEach(btn => {
     btn.addEventListener("click", () => {
       const f = btn.dataset.filter;
       document.querySelectorAll(".exp-item").forEach(item => {
-        item.style.display = f==="all" || item.innerHTML.includes(f) ? "block" : "none";
+        item.style.display = f==="all" || item.dataset.type===f ? "block" : "none";
       });
     });
   });
 
-  /* =========================
-     BACKGROUND MUSIC & VIDEO PAUSE CONTROL
-  ========================= */
+  // =========================
+  // BACKGROUND MUSIC & VIDEO PAUSE
+  // =========================
   const bgMusic = document.getElementById("bgMusic");
   let currentVideo = null;
 
@@ -175,12 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const iframes = expBody.querySelectorAll("iframe");
     iframes.forEach(iframe => {
       iframe.addEventListener("mouseenter", () => {
-        if(bgMusic && !bgMusic.paused){
-          bgMusic.pause();
-        }
-        if(currentVideo && currentVideo !== iframe){
-          currentVideo.src = currentVideo.src; // reset previous video
-        }
+        if(bgMusic && !bgMusic.paused) bgMusic.pause();
+        if(currentVideo && currentVideo !== iframe) currentVideo.src = currentVideo.src; // stop previous
         currentVideo = iframe;
       });
     });
