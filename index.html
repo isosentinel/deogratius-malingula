@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+meta charset="UTF-8">
 <title>ISO Sentinel | Cybersecurity & Information Security Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00fff7">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 
 <body>
 
+<!-- INSTALL BANNER -->
+<div id="installBanner" style="display:none;position:fixed;bottom:10px;left:10px;right:10px;background:#00fff7;color:#020210;padding:15px;border-radius:12px;text-align:center;z-index:10000;">
+  Install ISO Sentinel on your device for offline access
+  <button id="installBtn" style="margin-left:15px;padding:8px 20px;border:none;border-radius:8px;background:#020210;color:#00fff7;cursor:pointer;">Install</button>
+</div>
+
 <header>
   <div class="logo-box">
-    <img src="logo.png" alt="ISO Sentinel Logo">
+    <img src="Logo.png" alt="ISO Sentinel Logo">
     <h2>ISO Sentinel</h2>
   </div>
   <nav>
@@ -37,7 +54,7 @@
 <section id="home" class="page active">
   <div class="hero">
     <div class="hero-music">
-      <audio id="bgMusic" controls preload="none">
+      <audio id="bgMusic" controls preload="auto">
         <source src="backmusic.mp3" type="audio/mpeg">
       </audio>
     </div>
@@ -106,7 +123,7 @@
 <section id="videos" class="page">
   <h2>Security Tutorial Videos</h2>
   <div class="grid" id="video-grid">
-    <!-- Videos can be populated dynamically if needed -->
+    <!-- Videos populated dynamically via JS -->
   </div>
 </section>
 
@@ -143,6 +160,8 @@
     <div id="exp-body"></div>
   </div>
 </div>
+
+<div id="page-transition">LOADING...</div>
 
 <script src="script.js"></script>
 </body>
