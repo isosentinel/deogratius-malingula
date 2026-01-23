@@ -78,11 +78,24 @@ header{
   border-bottom:1px solid var(--accent-soft);
 }
 
+header .logo-box{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+header .logo-box img{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+}
+
 header nav a{
   margin:0 16px;
   color:var(--accent);
   text-decoration:none;
   font-weight:500;
+  cursor:pointer;
 }
 
 /* =========================
@@ -149,6 +162,12 @@ header nav a{
 .hero h1{
   font-size:4rem;
   text-shadow:0 0 35px var(--accent);
+}
+
+.hero-music audio{
+  outline:none;
+  border-radius:12px;
+  margin-bottom:20px;
 }
 
 /* =========================
@@ -240,17 +259,74 @@ footer{
 }
 
 /* =========================
+   POPUP EXPLORER
+========================= */
+#explorer{
+  position:fixed;inset:0;
+  display:none;
+  background:rgba(0,0,30,.96);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+.explorer-box{
+  width:95%;max-width:1200px;
+  max-height:90vh;
+  overflow:auto;
+  background:#060620;
+  padding:35px;
+  border-radius:30px;
+}
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:22px;
+}
+#search{
+  width:100%;
+  padding:15px;
+  margin:20px 0;
+  border-radius:14px;
+  border:none;
+}
+.filters button{
+  margin:5px;
+  padding:10px 18px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+}
+#exp-body{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+.exp-item{
+  background:#0c0c30;
+  padding:20px;
+  border-radius:18px;
+}
+.exp-item iframe,
+.exp-item img{
+  width:100%;
+  border-radius:14px;
+}
+
+/* =========================
+   PAGE SWITCHING
+========================= */
+.page{
+  display:none;
+}
+.page.active{
+  display:block;
+}
+
+/* =========================
    RESPONSIVE
 ========================= */
 @media(max-width:768px){
   .hero h1{font-size:2.6rem;}
   header{padding:15px 20px;}
+  body{background-attachment:scroll; background-size:cover;}
 }
-
-@media (max-width:768px){
-  body{
-    background-attachment:scroll;
-    background-size:cover;
-  }
-}
-
