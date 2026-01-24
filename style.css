@@ -76,6 +76,7 @@ header{
   padding:18px 45px;
   z-index:999;
   border-bottom:1px solid var(--accent-soft);
+  transition:.3s ease;
 }
 
 header .logo-box{
@@ -102,7 +103,7 @@ header nav a{
    MARQUEE – BLUE OCEAN
 ========================= */
 .marquee{
-  margin-top:95px;
+  margin-top:0;
   padding:16px 0;
   background:
     linear-gradient(
@@ -117,6 +118,7 @@ header nav a{
     0 0 30px rgba(0,191,255,0.45),
     inset 0 0 25px rgba(0,191,255,0.2);
   position:relative;
+  z-index:1000;
 }
 
 /* Cyber ocean grid lines */
@@ -151,23 +153,46 @@ header nav a{
    HERO
 ========================= */
 .hero{
-  min-height:100vh;
+  min-height:calc(100vh - 60px);
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-start;
   align-items:center;
   text-align:center;
+  padding-top:70px;
 }
 
 .hero h1{
   font-size:4rem;
+  margin-top:20px;
   text-shadow:0 0 35px var(--accent);
 }
 
 .hero-music audio{
   outline:none;
   border-radius:12px;
-  margin-bottom:20px;
+  margin-top:10px;
+}
+
+/* =========================
+   MOBILE NAV GLOBAL
+========================= */
+.mobile-nav{
+  display:none;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:80px;
+  padding:10px;
+}
+.mobile-nav a{
+  color:var(--accent);
+  background:var(--bg-card);
+  padding:8px 14px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:500;
+  cursor:pointer;
 }
 
 /* =========================
@@ -184,12 +209,9 @@ header nav a{
   border:1px solid var(--accent-soft);
   padding:35px;
   border-radius:26px;
-  box-shadow:
-    inset 0 0 20px rgba(0,255,247,0.08),
-    0 0 30px rgba(0,255,247,0.15);
+  box-shadow:inset 0 0 20px rgba(0,255,247,0.08),0 0 30px rgba(0,255,247,0.15);
   transition:.45s ease;
 }
-
 .card:hover{
   transform:translateY(-10px);
   box-shadow:0 0 60px rgba(0,255,247,0.35);
@@ -206,6 +228,10 @@ button{
   background:linear-gradient(90deg,var(--accent),#0077ff);
   font-weight:600;
   cursor:pointer;
+  transition:.3s ease;
+}
+button:hover{
+  opacity:.85;
 }
 
 /* =========================
@@ -252,7 +278,6 @@ footer{
   text-align:center;
   border-top:1px solid var(--accent-soft);
 }
-
 .italic{
   font-style:italic;
   color:var(--accent);
@@ -315,18 +340,13 @@ footer{
 /* =========================
    PAGE SWITCHING
 ========================= */
-.page{
-  display:none;
-}
-.page.active{
-  display:block;
-}
+.page{display:none;}
+.page.active{display:block;}
 
 /* =========================
    RESPONSIVE
 ========================= */
 @media(max-width:768px){
   .hero h1{font-size:2.6rem;}
-  header{padding:15px 20px;}
-  body{background-attachment:scroll; background-size:cover;}
-}
+  header{padding:10px 20px;}
+  body{background-attachment

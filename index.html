@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-meta charset="UTF-8">
+<meta charset="UTF-8">
 <title>ISO Sentinel | Cybersecurity & Information Security Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ISO Sentinel is a Cybersecurity and Information Security Learning Platform for students and professionals.">
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -17,15 +18,25 @@ meta charset="UTF-8">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
 </head>
 
 <body>
 
+<!-- =========================
+   MARQUEE – BLUE OCEAN
+========================= -->
+<div class="marquee">
+  <marquee>
+    Karibu ISO Sentinel, Tovuti maalumu kwa wanafunzi wa cyber security. Karibu tujifunze ulinzi na usalama wa taarifa kwa maslahi mapana ya taifa.
+  </marquee>
+</div>
+
 <!-- INSTALL BANNER -->
-<div id="installBanner" style="display:none;position:fixed;bottom:10px;left:10px;right:10px;background:#00fff7;color:#020210;padding:15px;border-radius:12px;text-align:center;z-index:10000;">
-  Install ISO Sentinel on your device for offline access
-  <button id="installBtn" style="margin-left:15px;padding:8px 20px;border:none;border-radius:8px;background:#020210;color:#00fff7;cursor:pointer;">Install</button>
+<div id="installBanner" class="install-banner">
+  <span id="installText">Install ISO Sentinel on your device for offline access</span>
+  <button id="installBtn">Install</button>
 </div>
 
 <header>
@@ -44,10 +55,15 @@ meta charset="UTF-8">
   </nav>
 </header>
 
-<div class="marquee">
-  <marquee>
-    Karibu ISO Sentinel, Tovuti maalumu kwa wanafunzi wa cyber security. Karibu tujifunze ulinzi na usalama wa taarifa kwa maslahi mapana ya taifa.
-  </marquee>
+<!-- MOBILE NAV GLOBAL -->
+<div class="mobile-nav">
+  <a data-section="home">Home</a>
+  <a data-section="about">About</a>
+  <a data-section="profile">Profile</a>
+  <a data-section="modules">Modules</a>
+  <a data-section="platforms">Platforms</a>
+  <a data-section="videos">Videos</a>
+  <a data-section="contact">Contact</a>
 </div>
 
 <!-- HOME PAGE -->
@@ -132,9 +148,12 @@ meta charset="UTF-8">
   <p>Email: isosentinel@gmail.com</p>
   <p>Phone: +255 626 425 950</p>
   <form>
-    <input type="text" placeholder="Your Name">
-    <input type="email" placeholder="Your Email">
-    <textarea placeholder="Your Message"></textarea>
+    <label for="name">Your Name</label>
+    <input id="name" type="text" placeholder="Your Name">
+    <label for="email">Your Email</label>
+    <input id="email" type="email" placeholder="Your Email">
+    <label for="message">Your Message</label>
+    <textarea id="message" placeholder="Your Message"></textarea>
     <button>Send Message</button>
   </form>
 </section>
@@ -146,7 +165,7 @@ meta charset="UTF-8">
 </footer>
 
 <!-- POPUP EXPLORER -->
-<div id="explorer">
+<div id="explorer" role="dialog" aria-modal="true">
   <div class="explorer-box">
     <span class="close">✖</span>
     <h2 id="exp-title"></h2>

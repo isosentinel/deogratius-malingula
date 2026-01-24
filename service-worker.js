@@ -1,4 +1,4 @@
-const CACHE_NAME = 'isosentinel-cache-v1';
+const CACHE_NAME = 'isosentinel-cache-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -45,9 +45,11 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(response => {
       return response || fetch(event.request);
-    }).catch(() => {
-      // fallback if offline and not cached
-      if(event.request.destination === 'document') return caches.match('/index.html');
+    }).catch(err => {
+      console.error('Fetch failed:', event.request.url, err);
+      if(event.request.destination === 'document') {
+        return caches.match('/index.html');
+      }
     })
   );
 });

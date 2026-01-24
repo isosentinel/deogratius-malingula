@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/service-worker.js')
         .then(reg => console.log('Service Worker Registered', reg))
-        .catch(err => console.log('Service Worker Failed', err));
+        .catch(err => console.error('Service Worker Failed', err));
     });
   }
 
@@ -17,34 +17,48 @@ document.addEventListener("DOMContentLoaded", () => {
   let deferredPrompt;
   const installBanner = document.getElementById('installBanner');
   const installBtn = document.getElementById('installBtn');
+  const installText = document.getElementById('installText');
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBanner.style.display = 'block';
-  });
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-  installBtn.addEventListener('click', async () => {
-    installBanner.style.display = 'none';
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const choiceResult = await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      console.log(choiceResult.outcome);
+  if (isIOS) {
+    installText.innerText = 'To install ISO Sentinel on iOS: Tap Share (⬆) → Add to Home Screen';
+    if (installBtn) installBtn.style.display = 'none';
+    if (installBanner) installBanner.style.display = 'block';
+  } else {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (installBanner) installBanner.style.display = 'block';
+    });
+
+    if (installBtn) {
+      installBtn.addEventListener('click', async () => {
+        installBanner.style.display = 'none';
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const choiceResult = await deferredPrompt.userChoice;
+          deferredPrompt = null;
+          console.log('User choice:', choiceResult.outcome);
+        }
+      });
     }
-  });
+  }
 
   // =========================
   // PAGE TRANSITION
   // =========================
   const transition = document.getElementById("page-transition");
-  window.addEventListener("load", () => transition.classList.add("hide"));
+  window.addEventListener("load", () => {
+    if (transition) transition.classList.add("hide");
+  });
 
   // =========================
   // SINGLE PAGE NAVIGATION
   // =========================
   const pages = document.querySelectorAll(".page");
-  const navLinks = document.querySelectorAll("header nav a");
+  const navLinks = document.querySelectorAll("header nav a, .mobile-nav a");
+
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
       const target = link.dataset.section;
@@ -61,21 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const expBody = document.getElementById("exp-body");
   const searchInput = document.getElementById("search");
 
-  document.querySelectorAll(".explore-btn button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const title = btn.parentElement.dataset.title;
-      expTitle.innerText = title;
-      renderItems(contentDB[title] || []);
-      explorer.style.display = "flex";
-      searchInput.value = "";
-    });
-  });
-
-  document.querySelector(".close").addEventListener("click", () => explorer.style.display = "none");
-
-  // =========================
-  // CONTENT DATABASE
-  // =========================
   const contentDB = {
     "Introduction to Cyber Security":[
       {type:"pdf",title:"Cyber Notes",src:"docs/cyber.pdf"},
@@ -135,6 +134,23 @@ document.addEventListener("DOMContentLoaded", () => {
     ]
   };
 
+    // =========================
+  // EXPLORER BUTTONS
+  // =========================
+  document.querySelectorAll(".explore-btn button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const title = btn.parentElement.dataset.title;
+      expTitle.innerText = title;
+      renderItems(contentDB[title] || []);
+      explorer.style.display = "flex";
+      searchInput.value = "";
+    });
+  });
+
+  document.querySelector(".close").addEventListener("click", () => {
+    explorer.style.display = "none";
+  });
+
   // =========================
   // RENDER EXPLORER ITEMS
   // =========================
@@ -144,9 +160,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const div = document.createElement("div");
       div.className = "exp-item";
       div.dataset.type = item.type;
-      if(item.type==="pdf") div.innerHTML = `<h4>${item.title}</h4><a href="${item.src}" target="_blank">View PDF</a>`;
-      if(item.type==="video") div.innerHTML = `<h4>${item.title}</h4><iframe src="${item.src}" allowfullscreen loading="lazy"></iframe>`;
-      if(item.type==="image") div.innerHTML = `<h4>${item.title}</h4><img src="${item.src}" alt="${item.title}">`;
+      if(item.type==="pdf") {
+        div.innerHTML = `<h4>${item.title}</h4><a href="${item.src}" target="_blank">View PDF</a>`;
+      }
+      if(item.type==="video") {
+        div.innerHTML = `<h4>${item.title}</h4><iframe src="${item.src}" allowfullscreen loading="lazy"></iframe>`;
+      }
+      if(item.type==="image") {
+        div.innerHTML = `<h4>${item.title}</h4><img src="${item.src}" alt="${item.title}">`;
+      }
       expBody.appendChild(div);
     });
     setupVideoPause();
@@ -185,7 +207,9 @@ document.addEventListener("DOMContentLoaded", () => {
     iframes.forEach(iframe => {
       iframe.addEventListener("mouseenter", () => {
         if(bgMusic && !bgMusic.paused) bgMusic.pause();
-        if(currentVideo && currentVideo !== iframe) currentVideo.src = currentVideo.src; // stop previous
+        if(currentVideo && currentVideo !== iframe) {
+          currentVideo.src = currentVideo.src; // stop previous
+        }
         currentVideo = iframe;
       });
     });

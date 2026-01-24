@@ -1,12 +1,14 @@
 {
+  "id": "isosentinel",
   "name": "ISO Sentinel",
-  "short_name": "ISOSentinel",
+  "short_name": "ISO Sentinel",
   "description": "Cybersecurity and Information Security Learning Platform",
   "start_url": "/index.html",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#020210",
   "theme_color": "#00fff7",
-  "orientation": "portrait",
   "icons": [
     {
       "src": "icons/icon-192.png",
@@ -14,10 +16,9 @@
       "type": "image/png"
     },
     {
-      "src": "icons/icon-192.png",
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ]
 }
-
