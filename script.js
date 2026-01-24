@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // =========================
   // REGISTER SERVICE WORKER
-  // =========================
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/service-worker.js')
@@ -11,9 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // =========================
   // INSTALL BANNER FOR PWA
-  // =========================
   let deferredPrompt;
   const installBanner = document.getElementById('installBanner');
   const installBtn = document.getElementById('installBtn');
@@ -22,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
   if (isIOS) {
-    installText.innerText = 'To install ISO Sentinel on iOS: Tap Share (⬆) → Add to Home Screen';
+    if (installText) installText.innerText = 'To install ISO Sentinel on iOS: Tap Share (⬆) → Add to Home Screen';
     if (installBtn) installBtn.style.display = 'none';
     if (installBanner) installBanner.style.display = 'block';
   } else {
@@ -45,19 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // =========================
   // PAGE TRANSITION
-  // =========================
   const transition = document.getElementById("page-transition");
   window.addEventListener("load", () => {
     if (transition) transition.classList.add("hide");
   });
 
-  // =========================
   // SINGLE PAGE NAVIGATION
-  // =========================
   const pages = document.querySelectorAll(".page");
-  const navLinks = document.querySelectorAll("header nav a, .mobile-nav a");
+  const navLinks = document.querySelectorAll("nav.global-links a");
 
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
@@ -67,9 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // =========================
   // EXPLORER POPUP
-  // =========================
   const explorer = document.getElementById("explorer");
   const expTitle = document.getElementById("exp-title");
   const expBody = document.getElementById("exp-body");
@@ -134,9 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ]
   };
 
-    // =========================
   // EXPLORER BUTTONS
-  // =========================
   document.querySelectorAll(".explore-btn button").forEach(btn => {
     btn.addEventListener("click", () => {
       const title = btn.parentElement.dataset.title;
@@ -151,9 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     explorer.style.display = "none";
   });
 
-  // =========================
   // RENDER EXPLORER ITEMS
-  // =========================
   function renderItems(items){
     expBody.innerHTML = "";
     items.forEach(item => {
@@ -174,9 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupVideoPause();
   }
 
-  // =========================
   // SEARCH FUNCTION
-  // =========================
   searchInput.addEventListener("input", e => {
     const q = e.target.value.toLowerCase();
     document.querySelectorAll(".exp-item").forEach(item => {
@@ -184,9 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // =========================
   // FILTER BUTTONS
-  // =========================
   document.querySelectorAll(".filters button").forEach(btn => {
     btn.addEventListener("click", () => {
       const f = btn.dataset.filter;
@@ -196,9 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // =========================
   // BACKGROUND MUSIC & VIDEO PAUSE
-  // =========================
   const bgMusic = document.getElementById("bgMusic");
   let currentVideo = null;
 
